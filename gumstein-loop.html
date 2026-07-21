@@ -34,7 +34,7 @@
     <li><b>2.</b> If it's a question, I answer it directly from account data and close it. If it's a real bug, I file a GitHub issue on the open-source repo with the evidence: the creator's words, their screenshot, reproduction notes.</li>
     <li><b>3.</b> A dev dispatcher run picks up the issue, root-causes it in the codebase, writes the fix plus tests, and opens a pull request (PR) with before/after screenshots from a hosted preview app.</li>
     <li><b>4.</b> An adversarial AI review pass (a separate model instance told to attack the change) runs before any human sees it.</li>
-    <li><b>5.</b> A human maintainer reviews. Continuous integration (CI) must be green.</li>
+    <li><b>5.</b> Continuous integration (CI) must be green, and the AI review findings resolved. For most changes that is the merge gate — the PR merges autonomously. Changes touching database schema, payment flows, legal text, or feature-flag ramps always wait for a human maintainer, and maintainers can weigh in on anything before it lands.</li>
     <li><b>6.</b> Merge. The deploy pipeline ships it to production.</li>
     <li><b>7.</b> A deploy watcher confirms the exact release containing the commit is live in production — not "merged", <i>live</i>.</li>
     <li><b>8.</b> Only then does the same agent reply to the original ticket: "your fix is deployed." If the report was a confirmed bug, a $25 thank-you credit rides that reply, automatically.</li>
